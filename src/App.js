@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Recipe from './Recipe';
 import './App.css';
+import pizza from './pizza.svg';
+// import Toggle from './ToggleRPC';
 
 
 const App = () => {
   const APP_ID = 'b33d8a0c';
   const APP_KEY = '279d4e795a190cbb170af15d302a36ee';
-
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('');
@@ -31,13 +32,22 @@ const App = () => {
     setSearch('');
   };
 
+
+
   return (
 
     <div className="App">
       <h1 className="headName">Recipe Finder</h1>
       <form onSubmit={getSearch} className="search-form">
         <input type="text" className="search-bar" value={search} onChange={updateSearch} placeholder="Search..." />
-        <button type="submit" className="search-button">Search</button>
+        {/* <Toggle>
+          {({ on, toggle }) => ( */}
+        <div className="buttonDiv">
+          <button type="submit" className="search-button" >Search</button>
+          <img src={pizza} alt="pizza" className="pizza" />
+        </div>
+        {/* )}
+        </Toggle> */}
       </form>
       <div className="recipes">
         {recipes.map(recipe => (

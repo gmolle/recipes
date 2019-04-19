@@ -72,6 +72,16 @@
   flex-direction: column;
 }
 
+.pizza {
+  width: 40%;
+}
+
+.buttonDiv {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 
 @keyframes fadeIn {
   0% {
