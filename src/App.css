@@ -2,6 +2,10 @@
   min-height: 100vh;
   background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
   animation: 2s fadeIn;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .search-form {
@@ -9,15 +13,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: 2.5s slideInLeft;
 }
 
 .search-bar {
-  width: 50%;
+  width: 100%;
   border: none;
   padding: 10px;
 }
 
-.search-button {
+.search-button,
+.start {
   background: lightcoral;
   border: none;
   padding: 10px 20px;
@@ -27,12 +33,14 @@
   margin-left: 5px;
 }
 
-.search-button:hover {
+.search-button:hover,
+.start:hover {
   background: rgb(202, 110, 110);
   transition: .25s;
 }
 
-.search-button:focus {
+.search-button:focus,
+.start:focus {
   border: none;
   outline: none;
 }
@@ -47,7 +55,23 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  animation: 2.5s slideInRight;
 }
+
+.none {
+  display: none;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  flex-direction: column;
+}
+
 
 @keyframes fadeIn {
   0% {
@@ -55,6 +79,30 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% { 
+    transform: translateX(1000px);
+  }
+  80% {
+    transform: translateX(-5px);
+  }
+   100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes slideInLeft {
+  0% { 
+    transform: translateX(-1000px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+   100% {
+    transform: translateX(0px);
   }
 }
 

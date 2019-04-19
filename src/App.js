@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Recipe from './Recipe';
 import './App.css';
 
+
 const App = () => {
   const APP_ID = 'b33d8a0c';
   const APP_KEY = '279d4e795a190cbb170af15d302a36ee';
@@ -18,7 +19,6 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data.hits);
   };
 
   const updateSearch = e => {
@@ -32,6 +32,7 @@ const App = () => {
   };
 
   return (
+
     <div className="App">
       <h1 className="headName">Recipe Finder</h1>
       <form onSubmit={getSearch} className="search-form">

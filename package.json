@@ -3,10 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "animate.css": "^3.7.0",
+    "aos": "^2.3.4",
     "gh-pages": "^2.0.1",
     "react": "^16.8.6",
+    "react-animate-on-scroll": "^2.1.5",
+    "react-animated-css": "^1.0.5",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-reveal": "^1.2.2",
+    "react-scripts": "2.1.8",
+    "react-scroll-effects": "^1.0.13"
   },
   "scripts": {
     "start": "react-scripts start",
