@@ -17,7 +17,7 @@ const App = () => {
   }, [query]);
 
   const getRecipes = async () => {
-    const response = await fetch(`https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`);
+    const response = await fetch(`https://api.edamam.com/search?q=${query}&from=0&to=25&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
   };
@@ -31,6 +31,9 @@ const App = () => {
     setQuery(search);
     setSearch('');
   };
+
+  const uuidv4 = require('uuid/v4');
+
 
 
 
@@ -52,7 +55,7 @@ const App = () => {
       <div className="recipes">
         {recipes.map(recipe => (
           <Recipe
-            key={recipe.recipe.label}
+            key={uuidv4()}
             title={recipe.recipe.label}
             calories={recipe.recipe.calories}
             image={recipe.recipe.image}

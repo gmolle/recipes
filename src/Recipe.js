@@ -5,7 +5,7 @@ import Fade from 'react-reveal/Fade';
 
 const Recipe = ({ title, calories, image, ingredients, url }) => {
 
-
+  const uuidv4 = require('uuid/v4');
   return (
     <Slide bottom>
       <div className={style.recipe}>
@@ -14,7 +14,9 @@ const Recipe = ({ title, calories, image, ingredients, url }) => {
           <p>Calories: {Math.round(calories)}</p>
           <ul>
             {ingredients.map(ingredient => (
-              <li>{ingredient.text}</li>
+              <li key={uuidv4()}>
+
+                {ingredient.text}</li>
             ))}
           </ul>
 
