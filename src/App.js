@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Recipe from './Recipe';
 import './App.css';
 import pizza from './pizza.svg';
-// import Toggle from './ToggleRPC';
 
 
 const App = () => {
@@ -20,6 +19,8 @@ const App = () => {
     const response = await fetch(`https://api.edamam.com/search?q=${query}&from=0&to=25&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
+    console.log(data.hits);
+
   };
 
   const updateSearch = e => {
@@ -32,7 +33,7 @@ const App = () => {
     setSearch('');
   };
 
-  const uuidv4 = require('uuid/v4');
+
 
 
 
@@ -42,20 +43,16 @@ const App = () => {
     <div className="App">
       <h1 className="headName">Recipe Finder</h1>
       <form onSubmit={getSearch} className="search-form">
-        <input type="text" className="search-bar" value={search} onChange={updateSearch} placeholder="Search..." />
-        {/* <Toggle>
-          {({ on, toggle }) => ( */}
+        <input type="text" className="search-bar" value={search} onChange={updateSearch} placeholder="Search For Food..." />
         <div className="buttonDiv">
           <button type="submit" className="search-button" >Search</button>
           <img src={pizza} alt="pizza" className="pizza" />
         </div>
-        {/* )}
-        </Toggle> */}
       </form>
       <div className="recipes">
         {recipes.map(recipe => (
           <Recipe
-            key={uuidv4()}
+            key={recipe.recipe.url}
             title={recipe.recipe.label}
             calories={recipe.recipe.calories}
             image={recipe.recipe.image}
