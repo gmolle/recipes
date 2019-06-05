@@ -2,6 +2,7 @@ import React from 'react';
 import style from './recipe.module.css';
 import Slide from 'react-reveal/Slide';
 import Fade from 'react-reveal/Fade';
+import { Button } from 'react-bootstrap';
 
 
 const Recipe = ({ title, calories, image, ingredients, url }) => {
@@ -11,21 +12,16 @@ const Recipe = ({ title, calories, image, ingredients, url }) => {
   return (
     <Slide bottom delay={250} duration={2000}>
       <div className={style.recipe}>
+        <h1>{title}</h1>
+        <p key={uuidv4()}> Calories: {Math.round(calories)}</p>
+        <a href={url} target="_blank" rel="noopener noreferrer" className="recipeLink"><Button variant="secondary">Recipe</Button></a>
+        <ul>
+          {ingredients.map(ingredient => (
+            <li key={uuidv4()}>
+              {ingredient.text}</li>
+          ))}
+        </ul>
         <Fade delay={250}>
-          <a href={url} className="recipeLink" target="_blank" rel="noopener noreferrer"><h1>{title}</h1></a>
-          <Slide key={uuidv4()}
-            bottom delay={500}>
-            <p>Calories: {Math.round(calories)}</p>
-          </Slide>
-          <ul>
-            {ingredients.map(ingredient => (
-              <Slide key={uuidv4()}
-                bottom delay={500}>
-                <li >
-                  {ingredient.text}</li>
-              </Slide>
-            ))}
-          </ul>
           <img className={style.image} src={image} alt="Completed Recipe" />
         </Fade>
       </div>

@@ -16,7 +16,7 @@ const App = () => {
   }, [query]);
 
   const getRecipes = async () => {
-    const response = await fetch(`https://api.edamam.com/search?q=${query}&from=0&to=25&app_id=${APP_ID}&app_key=${APP_KEY}`);
+    const response = await fetch(`https://api.edamam.com/search?q=${query}&from=0&to=24&app_id=${APP_ID}&app_key=${APP_KEY}`);
     const data = await response.json();
     setRecipes(data.hits);
     console.log(data.hits);
@@ -33,7 +33,27 @@ const App = () => {
     setSearch('');
   };
 
+  const loader = () => {
+    const loader = document.querySelector('.loader');
+    const main = document.querySelector('.recipes');
+    const form = document.querySelector('.search-form');
+    const title = document.querySelector('.headName');
 
+    main.style.display = 'none';
+    loader.style.display = 'block';
+    form.style.display = 'none';
+    title.style.display = 'none';
+
+    setTimeout(() => {
+      loader.style.display = 'none';
+      main.style.display = 'flex';
+      form.style.display = 'flex';
+      title.style.display = 'block';
+
+      form.style.animation = 'none';
+      title.style.animation = 'none';
+    }, 3500);
+  }
 
 
 
@@ -45,10 +65,15 @@ const App = () => {
       <form onSubmit={getSearch} className="search-form">
         <input type="text" className="search-bar" value={search} onChange={updateSearch} placeholder="Search For Food..." />
         <div className="buttonDiv">
-          <button type="submit" className="search-button" >Search</button>
+          <button type="submit" className="search-button" onClick={loader}>Search</button>
           <img src={pizza} alt="pizza" className="pizza" />
         </div>
       </form>
+      <div className="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <div className="recipes">
         {recipes.map(recipe => (
           <Recipe
